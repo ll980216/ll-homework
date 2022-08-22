@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function process(url) {
+            let newUrl = url.split('?')[1].replace(/=/g, '&').split('&')
+            return newUrl.reduce((pre, cur, index, arr) => {
+                // console.log('1', pre, '2', cur, '3', index, '4', arr);
+                if (index % 2 == 0) {
+                    pre[cur] = arr[index + 1]
+                }
+                return pre
+            }, {})
+        }
+
+        let newURL = process('http://www.baidu.com/?name=zhangsan&age=18&sex=nan')
+        console.log(newURL);
+    </script>
+</body>
+
+</html>
